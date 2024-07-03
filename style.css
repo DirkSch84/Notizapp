@@ -1,0 +1,168 @@
+@font-face {
+  font-family: "Poppins-Bold"; /* Definiert den benutzerdefinierten Font */
+  src: url(Fonts/Poppins/Poppins-Bold.ttf); /* URL zum Font */
+  font-weight: normal; /* Normalgewicht des Fonts */
+  font-style: normal; /* Normale Schriftart */
+}
+
+* {
+  padding: 0; /* Setzt den Innenabstand aller Elemente auf 0 */
+  margin: 0; /* Setzt den Außenabstand aller Elemente auf 0 */
+}
+
+:root {
+  --font-family: "Poppins-Light", sans-serif; /* Definiert eine benutzerdefinierte Variable für die Schriftart */
+  --primary-color: 246, 93, 231; /* Primärfarbe als RGB-Wert */
+  --primary-color-rgb: rgb(
+    var(--primary-color)
+  ); /* Konvertiert den RGB-Wert in einen CSS-rgb() Wert */
+  --primary-color--hover: rgb(249, 126, 237); /* Farbe für den Hover-Effekt */
+}
+
+.notes-app {
+  display: flex; /* Flexibles Layout für die Notiz-App */
+  width: 100%; /* Volle Breite */
+  height: 100vh; /* Volle Bildschirmhöhe */
+  font-family: var(--font-family); /* Verwendet die definierte Schriftart */
+}
+
+.main-content {
+  padding: 1.5rem 1rem; /* Innenabstand oben und unten 1,5rem, links und rechts 1rem */
+  width: 100%; /* Volle Breite */
+}
+
+#title-input,
+#content-input {
+  width: 100%; /* Volle Breite für Eingabefelder */
+  border: none; /* Kein Rand */
+  outline: none; /* Kein Fokus-Rand */
+  font-family: var(--font-family); /* Verwendet die definierte Schriftart */
+}
+
+#title-input::placeholder,
+#content-input::placeholder {
+  color: gray; /* Platzhalterfarbe */
+}
+
+#title-input {
+  font-size: 3rem; /* Schriftgröße */
+  font-weight: 700; /* Schriftgewicht */
+}
+
+#content-input {
+  font-size: 1.5rem; /* Schriftgröße */
+  resize: none; /* Deaktiviert das Ändern der Größe des Textbereichs */
+  height: 80vh; /* Höhe des Textbereichs */
+}
+
+.title-and-save {
+  display: flex; /* Flexibles Layout */
+  gap: 0.5rem; /* Abstand zwischen den Elementen */
+  margin-bottom: 1.5rem; /* Außenabstand unten */
+}
+
+.sidebar {
+  border-right: 1px solid gray; /* Rechter Rand mit grauer Farbe */
+  padding: 1.5rem; /* Innenabstand */
+  width: 400px; /* Feste Breite für die Seitenleiste */
+  overflow: auto; /* Horizontales Scrollen, wenn Inhalt überläuft */
+}
+
+.create-new,
+.save-note,
+.delete-note {
+  color: white; /* Textfarbe */
+  background-color: var(--primary-color-rgb); /* Hintergrundfarbe */
+  border: none; /* Kein Rand */
+  padding: 1.5rem 0; /* Innenabstand oben und unten */
+  border-radius: 5px; /* Abrundung der Ecken */
+  width: 100%; /* Volle Breite */
+  font-size: 1rem; /* Schriftgröße */
+  font-family: var(--font-family); /* Verwendet die definierte Schriftart */
+  cursor: pointer; /* Zeiger-Cursor */
+  transition: all 0.2s ease-in-out; /* Übergangseffekt */
+}
+
+.create-new:hover,
+.save-note:hover,
+.delete-note:hover {
+  background-color: var(
+    --primary-color--hover
+  ); /* Hintergrundfarbe bei Hover */
+}
+
+.create-new {
+  display: flex; /* Flexibles Layout */
+  align-items: center; /* Ausrichtung der Elemente */
+  justify-content: center; /* Zentrierte Ausrichtung */
+  gap: 0.5rem; /* Abstand zwischen den Elementen */
+}
+
+.create-new .icon {
+  width: 1.5rem; /* Breite des Icons */
+  height: 1.5rem; /* Höhe des Icons */
+}
+
+.save-note,
+.delete-note {
+  width: unset; /* Zurücksetzen der Breite */
+  padding: 1rem; /* Innenabstand */
+}
+
+.icon {
+  width: 2rem; /* Breite des Icons */
+  height: 2rem; /* Höhe des Icons */
+}
+
+.notes-list {
+  display: flex; /* Flexibles Layout */
+  flex-direction: column; /* Anordnung in Spalten */
+  gap: 1rem; /* Abstand zwischen den Elementen */
+  margin-top: 1.5rem; /* Außenabstand oben */
+}
+
+.note-entry {
+  box-shadow: 0 0 5px 4px rgba(0, 0, 0, 0.1); /* Schatten */
+  border-radius: 5px; /* Abrundung der Ecken */
+  padding: 1rem; /* Innenabstand */
+  transition: all 0.2s ease-in-out; /* Übergangseffekt */
+}
+
+.note-entry:not(.selected-note) {
+  cursor: pointer; /* Zeiger-Cursor */
+}
+
+.note-entry:hover,
+.selected-note {
+  background-color: rgba(
+    var(--primary-color),
+    0.1
+  ); /* Hintergrundfarbe bei Hover */
+}
+
+.note-title {
+  margin-bottom: 0.5rem; /* Außenabstand unten */
+  font-size: 1.5rem; /* Schriftgröße */
+  font-weight: 500; /* Schriftgewicht */
+}
+
+.note-title,
+.note-content-teaser {
+  width: 100%; /* Volle Breite */
+  text-overflow: ellipsis; /* Textüberlauf mit Ellipsen */
+  white-space: nowrap; /* Kein Zeilenumbruch */
+  overflow: hidden; /* Versteckter Überlauf */
+}
+
+.note-content-teaser {
+  color: gray; /* Textfarbe */
+}
+
+.note-date {
+  width: 100%; /* Volle Breite */
+  text-align: right; /* Rechtsbündige Ausrichtung */
+  font-style: italic; /* Kursiver Text */
+  margin-top: 1rem; /* Außenabstand oben */
+  color: gray; /* Textfarbe */
+  font-size: 0.75rem; /* Schriftgröße */
+}
